@@ -1,4 +1,5 @@
-/**
+
+import java.sql.*;/**
  * A program to carry on conversations with a human user.
  * This is the initial version that:  
  * <ul><li>
@@ -31,7 +32,11 @@ public class Magpie2
 	public String getResponse(String statement)
 	{
 		String response = "";
-		if (statement.indexOf("no") >= 0)
+		statement = statement.trim();
+		if (statement.length() == 0){
+			response = "Say something please";
+		}
+		else if (statement.indexOf("no") >= 0)
 		{
 			response = "Why so negative?";
 		}
@@ -41,6 +46,16 @@ public class Magpie2
 				|| statement.indexOf("brother") >= 0)
 		{
 			response = "Tell me more about your family.";
+		} else if (statement.indexOf("dog") >= 0 || statement.indexOf("cat") >= 0){
+			response = "Tell me morr about your pets.";
+		} else if (statement.indexOf("Mr. Nelson") >= 0){
+			response = "He sounds like a good teacher ";
+		} else if (statement.indexOf("Groot") >= 0){
+			response = "I am Groot";
+		} else if (statement.indexOf("gun") >= 0){
+			response = "WHAT!";
+		} else if(statement.indexOf("dead") >= 0){
+			response = "Tell me more about heaven";
 		}
 		else
 		{
@@ -55,7 +70,7 @@ public class Magpie2
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -75,6 +90,10 @@ public class Magpie2
 		else if (whichResponse == 3)
 		{
 			response = "You don't say.";
+		} else if (whichResponse == 4){
+			response = "Eat S**!";
+		} else if (whichResponse == 5){
+			response = "Eat food, Don't die";
 		}
 
 		return response;
